@@ -18,11 +18,20 @@ spec:
           ports:
             - containerPort: 30000
           env:
-            - name: APP_NAME
+            - name: APP_AUTHOR
               valueFrom:
-                configMapKeyRef:
-                  name: app-config
-                  key: APP_NAME_CONFIG
+                secretKeyRef:
+                  name: app-secret
+                  key: APP_AUTHOR_CONFIG
+          # envFrom:
+          #   - secretRef:
+          #       name: app-secret
+          # env:
+          #   - name: APP_NAME
+          #     valueFrom:
+          #       configMapKeyRef:
+          #         name: app-config
+          #         key: APP_NAME_CONFIG
           # envFrom:
           #   - configMapRef:
           #       name: app-config
